@@ -1,5 +1,5 @@
 #[derive(Debug)]
-struct File {
+pub struct File {
 	file_content: String,
 }
 
