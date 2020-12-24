@@ -1,10 +1,15 @@
 use std::fs::create_dir; // Function for creating a empty dir
+
 use super::error::Error; // Taking to the scope trait Error
 use super::encrypt::Encrypt; // Struct for encrypt data
+
 use std::io;
 use std::fs::File; // File system
 use std::io::prelude::*;
+
 use serde_json; // For saving json to a file
+
+use termion::clear;
 
 #[derive(Debug)]
 pub struct Creator {
@@ -39,6 +44,7 @@ impl Creator {
 		let number_of_iter = number_of_iter.trim().parse().expect("Enter a number of passwords");
 
 		for _ in 0..number_of_iter {
+			println!("{}", clear::All);
 			let mut webpage_name = String::new();
 
 			println!("---------------");

@@ -8,3 +8,4 @@ edition = "2018"
 
 [dependencies]
 pass_manager_struct = {path = "../pass_manager_struct"}
+termion ="^1.5"

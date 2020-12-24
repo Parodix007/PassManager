@@ -5,11 +5,13 @@ use pass_manager_struct::creator::Creator;
 use pass_manager_struct::file_manager::FileContent;
 use pass_manager_struct::error::Error;
 
+use termion::clear;
 fn main() {
     let _os = String::from(env::consts::OS); // Create a var with name of user os
     let mut user_option = String::new();
 
     // Display simple menu
+    println!("{}", clear::All);
     println!("---------------");
     println!("Menu:\n1.Create file with passwords\n2.Read password from an existing file");
     println!("---------------");
@@ -33,7 +35,6 @@ fn main() {
     println!("---------------");
 
     if _user_option_parsed == 1 { // running program of option 1
-
     	let _creator = Creator::new(folder_name.trim().to_string(), file_name.trim().to_string(), _os); // Create a instance of Creator with value provide from user
 
     	match _creator.create_directory() {

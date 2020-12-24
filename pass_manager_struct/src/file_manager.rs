@@ -1,10 +1,13 @@
 use std::fs::File;
 use serde_json;
+
 use std::io;
 use std::io::prelude::*;
+
 use super::encrypt::Encrypt;
 use std::collections::HashMap;
 
+use termion::clear;
 #[derive(Debug)]
 pub struct FileContent {
 	file_name: String,
@@ -21,6 +24,7 @@ impl FileContent {
 	pub fn show_content(&self) -> String{
 		let _decrypt = Encrypt::new();
 		let mut webpage = String::new();
+		println!("{}", clear::All);
 		println!("---------------");
 		println!("Enter a name of webpage for which you need password: ");
 		io::stdin().read_line(&mut webpage).unwrap();
