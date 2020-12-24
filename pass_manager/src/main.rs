@@ -13,7 +13,7 @@ fn main() {
     // Display simple menu
     println!("{}", clear::All);
     println!("---------------");
-    println!("Menu:\n1.Create file with passwords\n2.Read password from an existing file");
+    println!("Menu:\n1.Create file with passwords\n2.Add password to existing file\n3.Read password from an existing file");
     println!("---------------");
     println!("Enter a option:");
     io::stdin().read_line(&mut user_option).unwrap(); // Taking option from user
@@ -21,14 +21,14 @@ fn main() {
     let _user_option_parsed: i8 = user_option.trim().parse().expect("Error while parsing"); // parsing option number
 
     println!("---------------");
-    println!("DIRECTORY CREATING");
+    println!("DIRECTORY NAME");
     let mut folder_name = String::new(); // Taking name of folder from user
     println!("Enter a name for your folder:");
     io::stdin().read_line(&mut folder_name).expect("Enter a folder name");
     println!("---------------");
 
     println!("---------------");
-    println!("FILE CREATING");
+    println!("FILE NAME");
     let mut file_name = String::new(); // Taking name of file from user
     println!("Enter a name for you`r file:");
     io::stdin().read_line(&mut file_name).expect("Enter a file name");
@@ -44,10 +44,17 @@ fn main() {
 
         if _creator.save_file_with_data() == true {
             println!("---------------");
-            println!("Everything is done thanks for using my system");
+            println!("Everything is done thanks for using my software :)");
         }
     	
-    } else if _user_option_parsed == 2 { // running program of option 2
+    } else if _user_option_parsed == 2{
+        let _file_update = FileContent::new(file_name.trim().to_string(), folder_name.trim().to_string());
+        let _is_success = _file_update.update_file();
+        if _is_success == true {
+            println!("Successfuly update a file thanks for using my software :)");
+        }
+
+    } else if _user_option_parsed == 3 { // running program of option 2
     	let _file_content = FileContent::new(file_name.trim().to_string(), folder_name.trim().to_string());
         let _password = _file_content.show_content();
         println!("---------------");
