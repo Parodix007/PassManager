@@ -6,3 +6,6 @@ Application for password management written in Rust. CLI
 
 # Enviroment
 * I am using here only rust and rust crates. Everything is in `Cargo.toml`.  
+
+# Note about error
+* If you face an error on windows, you have to delete termion from `Cargo.toml` and every `println!("{}", clear::All);` from the source code.
